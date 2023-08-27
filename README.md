@@ -1,5 +1,5 @@
 <h1 align="center">Hi, I'm Warren 👋</h1>
-<h3 align="center">A passionate Full-Stack Developer from San Diego, CA</h3>
+<h3 align="center">A passionate Full-Stack Developer from Los Angeles, CA</h3>
 
 - 👨‍💻 All of my projects are available at www.warrenau.dev
 - 💬 Talk to me about **rock climbing, archery, and Japan**
