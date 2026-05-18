@@ -1,0 +1,78 @@
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.main {
+  flex: 1;
+  max-width: 64rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  border-top: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  font-size: 0.875rem;
+  color: color-mix(in oklab, var(--foreground) 70%, transparent);
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .header,
+  .footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}

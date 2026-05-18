@@ -1,0 +1,91 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875rem;
+  color: color-mix(in oklab, var(--foreground) 65%, transparent);
+  letter-spacing: 0.02em;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  max-width: 32ch;
+}
+
+.lede {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 60ch;
+  color: color-mix(in oklab, var(--foreground) 85%, transparent);
+}
+
+.ctas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.primary {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.primary:hover,
+.primary:focus-visible {
+  transform: translateY(-1px);
+}
+
+.secondary {
+  border: 1px solid color-mix(in oklab, var(--foreground) 25%, transparent);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  background: color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+.section {
+  margin-top: 3rem;
+}
+
+.h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.stack li {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid color-mix(in oklab, var(--foreground) 18%, transparent);
+  border-radius: 9999px;
+}
