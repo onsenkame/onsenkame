@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import {
+  FaHome,
+  FaUser,
+  FaBriefcase,
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaPaintBrush,
+  FaBook,
+  FaEnvelope,
+  FaFileAlt,
+} from "react-icons/fa";
 import "./globals.css";
 import styles from "./layout.module.css";
 
@@ -19,43 +31,29 @@ const siteUrl = "https://warrenau.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Warren Au — Full-Stack Developer",
+    default: "Warren Au — Fullstack Developer",
     template: "%s · Warren Au",
   },
   description:
-    "Warren Au is a full-stack developer in Los Angeles building thoughtful web products. Rock climbing, archery, and Japan on the side.",
-  keywords: [
-    "Warren Au",
-    "full-stack developer",
-    "Los Angeles",
-    "React",
-    "Next.js",
-    "Node.js",
-    "TypeScript",
-  ],
+    "Warren Au is a fullstack developer in Los Angeles building thoughtful web products. Rock climbing, archery, and Japan on the side.",
   authors: [{ name: "Warren Au", url: siteUrl }],
   creator: "Warren Au",
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Warren Au — Full-Stack Developer",
+    title: "Warren Au — Fullstack Developer",
     description:
-      "Full-stack developer in Los Angeles. Web products, side projects, and notes.",
+      "Fullstack developer in Los Angeles. Web products, side projects, and notes.",
     siteName: "Warren Au",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Warren Au — Full-Stack Developer",
+    title: "Warren Au — Fullstack Developer",
     description:
-      "Full-stack developer in Los Angeles. Web products, side projects, and notes.",
+      "Fullstack developer in Los Angeles. Web products, side projects, and notes.",
   },
-  alternates: {
-    canonical: siteUrl,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  alternates: { canonical: siteUrl },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -69,20 +67,37 @@ export default function RootLayout({
         <a href="#main" className={styles.skip}>
           Skip to content
         </a>
+        <div className={styles.copperRing} aria-hidden="true" />
         <header className={styles.header}>
           <Link href="/" className={styles.brand} aria-label="Warren Au — home">
             Warren Au
           </Link>
-          <nav aria-label="Primary">
+          <nav aria-label="Primary" className={styles.navWrap}>
             <ul className={styles.nav}>
               <li>
-                <Link href="/projects">Projects</Link>
+                <Link href="/" className={`${styles.pill} ${styles.pillActive}`}>
+                  home
+                </Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <a href="#about" className={styles.pill}>
+                  about
+                </a>
               </li>
               <li>
-                <a href="mailto:aukwarren@gmail.com">Contact</a>
+                <a href="#projects" className={styles.pill}>
+                  projects
+                </a>
+              </li>
+              <li>
+                <a href="#process" className={styles.pill}>
+                  design
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className={styles.pill}>
+                  blog
+                </a>
               </li>
             </ul>
           </nav>
@@ -91,24 +106,66 @@ export default function RootLayout({
           {children}
         </main>
         <footer className={styles.footer}>
-          <p>© {new Date().getFullYear()} Warren Au</p>
-          <ul className={styles.socials}>
+          <ul className={styles.footerCol}>
             <li>
-              <a
-                href="https://www.linkedin.com/in/warren-au/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
+              <Link href="/">
+                <FaHome aria-hidden /> Home
+              </Link>
+            </li>
+            <li>
+              <a href="#about">
+                <FaUser aria-hidden /> About
               </a>
             </li>
+            <li>
+              <a href="#projects">
+                <FaBriefcase aria-hidden /> Projects
+              </a>
+            </li>
+          </ul>
+          <ul className={styles.footerCol}>
             <li>
               <a
                 href="https://github.com/onsenkame"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub
+                <FaGithub aria-hidden /> GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/warren-au"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin aria-hidden /> LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/onyumesen"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter aria-hidden /> Twitter
+              </a>
+            </li>
+          </ul>
+          <ul className={styles.footerCol}>
+            <li>
+              <a href="#contact">
+                <FaBook aria-hidden /> Blog
+              </a>
+            </li>
+            <li>
+              <a href="#contact">
+                <FaEnvelope aria-hidden /> Contact
+              </a>
+            </li>
+            <li>
+              <a href="#contact">
+                <FaFileAlt aria-hidden /> My CV
               </a>
             </li>
           </ul>
