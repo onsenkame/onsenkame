@@ -5,10 +5,6 @@ import styles from "./layout.module.css";
 
 export default function CopperRing() {
   const ringRef = useRef<HTMLDivElement>(null);
-  const target = useRef({ x: 0, y: 0 });
-  const current = useRef({ x: 0, y: 0 });
-  const rafId = useRef<number | null>(null);
-  const initialized = useRef(false);
 
   useEffect(() => {
     const ring = ringRef.current;
@@ -16,32 +12,43 @@ export default function CopperRing() {
 
     const initialX = window.innerWidth - 64;
     const initialY = 80;
-    target.current = { x: initialX, y: initialY };
-    current.current = { x: initialX, y: initialY };
     ring.style.transform = `translate3d(${initialX}px, ${initialY}px, 0) translate(-50%, -50%)`;
     ring.style.opacity = "1";
 
+    let pendingX = initialX;
+    let pendingY = initialY;
+    let rafQueued = false;
+
+    const flush = () => {
+      rafQueued = false;
+      ring.style.transform = `translate3d(${pendingX}px, ${pendingY}px, 0) translate(-50%, -50%)`;
+    };
+
     const onMove = (e: PointerEvent) => {
-      target.current = { x: e.clientX, y: e.clientY };
-      if (!initialized.current) {
-        initialized.current = true;
+      pendingX = e.clientX;
+      pendingY = e.clientY;
+      if (!rafQueued) {
+        rafQueued = true;
+        requestAnimationFrame(flush);
       }
     };
 
-    const tick = () => {
-      const ease = 0.12;
-      current.current.x += (target.current.x - current.current.x) * ease;
-      current.current.y += (target.current.y - current.current.y) * ease;
-      ring.style.transform = `translate3d(${current.current.x}px, ${current.current.y}px, 0) translate(-50%, -50%)`;
-      rafId.current = requestAnimationFrame(tick);
+    const onLeave = () => {
+      ring.style.opacity = "0";
+    };
+
+    const onEnter = () => {
+      ring.style.opacity = "1";
     };
 
     window.addEventListener("pointermove", onMove, { passive: true });
-    rafId.current = requestAnimationFrame(tick);
+    document.addEventListener("pointerleave", onLeave);
+    document.addEventListener("pointerenter", onEnter);
 
     return () => {
       window.removeEventListener("pointermove", onMove);
-      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      document.removeEventListener("pointerleave", onLeave);
+      document.removeEventListener("pointerenter", onEnter);
     };
   }, []);
 

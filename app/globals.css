@@ -58,3 +58,16 @@ textarea {
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  label,
+  [role="button"] {
+    cursor: none;
+  }
+}
