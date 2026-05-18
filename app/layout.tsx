@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import "./globals.css";
 import styles from "./layout.module.css";
+import CopperRing from "./CopperRing";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,7 +68,7 @@ export default function RootLayout({
         <a href="#main" className={styles.skip}>
           Skip to content
         </a>
-        <div className={styles.copperRing} aria-hidden="true" />
+        <CopperRing />
         <header className={styles.header}>
           <Link href="/" className={styles.brand} aria-label="Warren Au — home">
             Warren Au
